@@ -1,5 +1,6 @@
 """Django settings. Anything environment-specific is read from env vars."""
 import os
+import sys
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +42,9 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = "accounts.User"
+
+if "test" in sys.argv:  # fast password hashing keeps the test suite quick
+    PASSWORD_HASHERS = ["django.contrib.auth.hashers.MD5PasswordHasher"]
 USE_TZ = True
 TIME_ZONE = "UTC"
 STATIC_URL = "static/"

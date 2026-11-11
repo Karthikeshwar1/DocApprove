@@ -21,8 +21,8 @@ def api_exception_handler(exc, context):
             "details": response.data,
         }
     else:
-        error = {"code": getattr(exc, "default_code", "error"), "message": str(exc.detail)}
-        if isinstance(exc.detail, list | dict):  # non-ValidationError with structured detail
-            error["message"] = "Request failed."
+        # DRF has already normalised Http404/PermissionDenied into {"detail": ErrorDetail}.
+        detail = response.data.get("detail", "Request failed.")
+        error = {"code": getattr(detail, "code", "error"), "message": str(detail)}
     response.data = {"error": error}
     return response

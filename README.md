@@ -2,7 +2,7 @@
 
 A submitter submits a document (pasted text **or** an uploaded file) and tracks its status; a reviewer sees submissions and approves or rejects them. Django REST Framework API + React (Vite) client, SQLite storage.
 
-- **Loom walkthrough:** _TODO: add link_
+- **Loom walkthrough:** (sent through Google form/email)
 - **Hosted URL:** not hosted (bonus item skipped); run locally as below.
 
 ## Setup

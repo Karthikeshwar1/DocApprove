@@ -3,6 +3,7 @@ import { decideSubmission } from '../../api/submissions.js'
 import StatusBadge from '../../components/StatusBadge.jsx'
 import SubmissionBody from '../../components/SubmissionBody.jsx'
 import Spinner from '../../components/Spinner.jsx'
+import { formatDate } from '../../utils/format.js'
 
 export default function ReviewRow({ submission, onChanged }) {
   const [busy, setBusy] = useState('') // which decision is in flight
@@ -29,12 +30,12 @@ export default function ReviewRow({ submission, onChanged }) {
         <StatusBadge status={submission.status} />
       </div>
       <div className="muted">
-        By {submission.submitted_by} on {new Date(submission.created_at).toLocaleString()}
+        By {submission.submitted_by} on {formatDate(submission.created_at)}
       </div>
       <SubmissionBody submission={submission} />
       {submission.status === 'pending' && (
         <div className="actions">
-          <button disabled={!!busy} onClick={() => decide('approved')}>
+          <button className="primary" disabled={!!busy} onClick={() => decide('approved')}>
             {busy === 'approved' && <Spinner />} Approve
           </button>
           <button disabled={!!busy} onClick={() => decide('rejected')}>

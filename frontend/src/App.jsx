@@ -11,9 +11,9 @@ export default function App() {
     <div className="container">
       <header className="topbar">
         <h1>Document Approval</h1>
-        <span>
-          {user.username} ({user.role}){' '}
-          <button onClick={logout}>Log out</button>
+        <span className="user">
+          <span><strong>{user.username}</strong> · {user.role}</span>
+          <button className="quiet" onClick={logout}>Log out</button>
         </span>
       </header>
       {user.role === 'reviewer' ? <ReviewerPage /> : <SubmitterPage />}

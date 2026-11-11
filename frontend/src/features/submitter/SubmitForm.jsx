@@ -71,10 +71,10 @@ export default function SubmitForm({ onCreated }) {
       {errors.title && <p className="field-error">{errors.title}</p>}
 
       <div className="switch">
-        <button type="button" className={mode === 'text' ? 'active' : ''} onClick={() => setMode('text')}>
+        <button type="button" className={mode === 'text' ? 'active' : ''} aria-pressed={mode === 'text'} onClick={() => setMode('text')}>
           Write text
         </button>
-        <button type="button" className={mode === 'file' ? 'active' : ''} onClick={() => setMode('file')}>
+        <button type="button" className={mode === 'file' ? 'active' : ''} aria-pressed={mode === 'file'} onClick={() => setMode('file')}>
           Upload file
         </button>
       </div>

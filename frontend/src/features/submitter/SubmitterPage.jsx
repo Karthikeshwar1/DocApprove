@@ -3,6 +3,7 @@ import SubmissionList from '../../components/SubmissionList.jsx'
 import SubmissionBody from '../../components/SubmissionBody.jsx'
 import StatusBadge from '../../components/StatusBadge.jsx'
 import SubmitForm from './SubmitForm.jsx'
+import { formatDate } from '../../utils/format.js'
 
 export default function SubmitterPage() {
   const { data, loading, error, reload } = useSubmissions()
@@ -24,7 +25,7 @@ export default function SubmitterPage() {
               <strong>{s.title}</strong>
               <StatusBadge status={s.status} />
             </div>
-            <div className="muted">Submitted {new Date(s.created_at).toLocaleString()}</div>
+            <div className="muted">Submitted {formatDate(s.created_at)}</div>
             <SubmissionBody submission={s} />
           </>
         )}

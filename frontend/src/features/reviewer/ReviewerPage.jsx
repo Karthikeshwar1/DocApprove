@@ -19,7 +19,12 @@ export default function ReviewerPage() {
       <h2>Submissions</h2>
       <div className="switch">
         {TABS.map((t) => (
-          <button key={t.label} className={status === t.status ? 'active' : ''} onClick={() => setStatus(t.status)}>
+          <button
+            key={t.label}
+            className={status === t.status ? 'active' : ''}
+            aria-pressed={status === t.status}
+            onClick={() => setStatus(t.status)}
+          >
             {t.label}
           </button>
         ))}

@@ -29,7 +29,7 @@ Product Engineer (Full stack) take-home: submitters submit documents and track s
 ## Layout (non-obvious only)
 - `backend/`: Django (`config/`, `accounts/`, `submissions/`; rules in `submissions/services.py`); Python env: conda `env1` (`S:\Microsoft\DevSoftware\miniforge3\envs\env1`), deps from `backend/requirements.txt`; no project venv
 - `frontend/`: Vite React; all HTTP via `src/api/client.js`
-- root `package.json`: `npm test` runs both suites (env1 must be first on PATH: `python` resolves to the system 3.11 which lacks Django)
+- root `package.json`: `npm test` runs both suites; backend half via `scripts/test-backend.mjs` (uses `$PYTHON`, else `backend/.venv`, else PATH python). Run with env1 active or `PYTHON=<env1 python.exe>`; system python 3.11 lacks Django
 
 ## Docs (read only when needed)
 - `docs/spec.md`: verbatim take-home spec; read before every phase

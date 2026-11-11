@@ -33,11 +33,11 @@ Config is via env vars, none required for local use: `DJANGO_SECRET_KEY`, `DJANG
 
 ## Tests
 
-One command from the repo root (with the backend venv active): runs the Django tests, then the Vitest tests.
+One command from the repo root: runs the Django tests, then the Vitest tests (run `npm install` in `frontend/` once first).
 ```bash
 npm test
 ```
-`npm run test:backend` / `npm run test:frontend` run each half. Currently 66 backend + 21 frontend tests.
+The backend step uses `$PYTHON` if set, else `backend/.venv`, else the `python` on your PATH, so activate the environment you installed `backend/requirements.txt` into (or set `PYTHON`). If Django isn't found it says so instead of crashing. `npm run test:backend` / `npm run test:frontend` run each half. Currently 66 backend + 21 frontend tests.
 
 ## API design
 

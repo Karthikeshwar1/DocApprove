@@ -1,0 +1,9 @@
+{
+  "name": "document-approval-workflow",
+  "private": true,
+  "scripts": {
+    "test:backend": "cd backend && python manage.py test",
+    "test:frontend": "npm --prefix frontend test",
+    "test": "npm run test:backend && npm run test:frontend"
+  }
+}

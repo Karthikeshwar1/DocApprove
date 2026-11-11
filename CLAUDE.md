@@ -26,18 +26,19 @@ Product Engineer (Full stack) take-home: submitters submit documents and track s
 <!-- /apcd:protocol -->
 
 ## Layout (non-obvious only)
-- `backend/`, `frontend/`: planned, see plan once approved
+- `backend/`: Django (`config/`, `accounts/`, `submissions/`; rules in `submissions/services.py`); venv in `backend/.venv`
+- `frontend/`: Vite React; all HTTP via `src/api/client.js`
+- root `package.json`: `npm test` runs both suites (backend venv must be active)
 
 ## Docs (read only when needed)
 - `docs/spec.md`: verbatim take-home spec; read before every phase
 
 ## Progress
-- Checkpoint: 938afb6 (2026-11-11)
-- Check: none yet (single test command TBD)
-- Now: spec transcribed, rules set; awaiting user OK on plan
+- Checkpoint: 9aa2db3 (2026-11-11)
+- Check: `npm test` (66 backend + 21 frontend pass)
+- Now: all phases built and committed except README commit; remaining user-side: Loom link, push to private repo, share with enghiring@springboard.com
 - Next:
-  1. [ ] User approves plan (data model, endpoints, folders, tests)
-  2. [ ] Backend, then tests, then frontend, then README
-- Done: spec to docs/spec.md (2026-11-11)
-- Notes: open point: document = file, input, or both (spec: "a file, or an input")
-- Open questions: document type (see plan)
+  1. [ ] User: record Loom, fill README placeholder, push, share repo access
+- Done: backend + tests, frontend + tests, README (2026-11-11); manual E2E (login, create, approve) via browser pane (2026-11-11)
+- Notes: Bash heredocs with long bodies failed to parse here; use Write tool. Test hasher swapped to MD5 under `manage.py test` (PBKDF2 made suite take 112s). DRF converts Http404 before the exception handler; use response.data["detail"].code, not exc.
+- Open questions: none

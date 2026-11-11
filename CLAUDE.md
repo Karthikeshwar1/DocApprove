@@ -8,6 +8,7 @@ Product Engineer (Full stack) take-home: submitters submit documents and track s
 - Decision = status only (no comment); Swagger via drf-spectacular; Vitest for a few FE tests (2026-11-11)
 
 ## Rules & conventions
+- Python: always use the `env1` conda env (see Layout), never the system python or a new venv.
 - Ask whenever something is ambiguous or the decision is the user's to make.
 - Keep all text super concise; waste no tokens.
 - **Read the spec properly (`docs/spec.md`, only one provided) and satisfy every line as worded.** Re-read it before planning, before each phase, and before the README; check each requirement against it. Don't skim, don't paraphrase away detail (e.g. the spec says "submit a document (a file, or an input)").
@@ -26,9 +27,9 @@ Product Engineer (Full stack) take-home: submitters submit documents and track s
 <!-- /apcd:protocol -->
 
 ## Layout (non-obvious only)
-- `backend/`: Django (`config/`, `accounts/`, `submissions/`; rules in `submissions/services.py`); venv in `backend/.venv`
+- `backend/`: Django (`config/`, `accounts/`, `submissions/`; rules in `submissions/services.py`); Python env: conda `env1` (`S:\Microsoft\DevSoftware\miniforge3\envs\env1`), deps from `backend/requirements.txt`; no project venv
 - `frontend/`: Vite React; all HTTP via `src/api/client.js`
-- root `package.json`: `npm test` runs both suites (backend venv must be active)
+- root `package.json`: `npm test` runs both suites (env1 must be first on PATH: `python` resolves to the system 3.11 which lacks Django)
 
 ## Docs (read only when needed)
 - `docs/spec.md`: verbatim take-home spec; read before every phase
@@ -42,3 +43,4 @@ Product Engineer (Full stack) take-home: submitters submit documents and track s
 - Done: backend + tests, frontend + tests, README (2026-11-11); manual E2E (login, create, approve) via browser pane (2026-11-11)
 - Notes: Bash heredocs with long bodies failed to parse here; use Write tool. Test hasher swapped to MD5 under `manage.py test` (PBKDF2 made suite take 112s). DRF converts Http404 before the exception handler; use response.data["detail"].code, not exc.
 - Open questions: none
+- Notes (2026-11-12): earlier I used a `backend/.venv` off system Python 3.11 against the user's rule; removed it, all checks re-run on env1 (3.12.10): 66+21 pass.
